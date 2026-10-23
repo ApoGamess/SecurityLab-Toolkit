@@ -1,60 +1,56 @@
 # SecurityLab Toolkit
 
-**Cross-platform security auditing and opt-in hardening tools for Windows and Linux.**
+Educational security auditing tools for Windows and Linux. Each operating system has its own script.
 
-SecurityLab Toolkit is an educational, administrator-friendly command-line toolkit for inspecting operating-system security posture, reviewing local accounts and privilege assignments, examining firewall configuration, identifying listening network ports, and exporting diagnostic reports.
+> Not affiliated with or endorsed by CyberPatriot or the Air & Space Forces Association. Review competition rules before using automation.
 
-## Features
+## Choose your operating system
 
-| Capability | Windows | Linux |
-|---|---|---|
-| System inventory | Yes | Yes |
-| Local user review | Yes | Yes |
-| Privileged group review | Yes | Yes |
-| Firewall status | Yes | Yes |
-| Listening ports | Yes | Yes |
-| Service review | Yes | Yes |
-| Updates / protection review | Defender status | APT/DNF updates |
-| Timestamped reports | Yes | Yes |
-| Confirmed firewall enablement | Yes | UFW only |
+| System | Script | Command |
+| --- | --- | --- |
+| Windows 11 | `scripts/SecurityLab-Windows11.ps1` | `powershell -NoProfile -File .\\scripts\\SecurityLab-Windows11.ps1` |
+| Windows Server | `scripts/SecurityLab-WindowsServer.ps1` | `powershell -NoProfile -File .\\scripts\\SecurityLab-WindowsServer.ps1` |
+| General Windows | `scripts/SecurityLab-Windows.ps1` | `powershell -NoProfile -File .\\scripts\\SecurityLab-Windows.ps1` |
+| Linux Mint 21 | `scripts/securitylab-linux-mint21.sh` | `bash scripts/securitylab-linux-mint21.sh` |
+| Linux Server | `scripts/securitylab-linux-server.sh` | `bash scripts/securitylab-linux-server.sh` |
+| General Linux | `scripts/securitylab-linux.sh` | `bash scripts/securitylab-linux.sh` |
 
-## Quick start
+Commands assume your terminal is open at the repository root.
 
-**Windows (PowerShell 5.1 or newer):**
+## Installation
 
-```powershell
-powershell -NoProfile -File .\scripts\SecurityLab-Windows.ps1
-```
-
-**Linux (Bash):**
+Download the repository ZIP from GitHub and extract it, or clone it:
 
 ```bash
-bash scripts/securitylab-linux.sh
+git clone https://github.com/ApoGamess/SecurityLab-Toolkit.git
+cd SecurityLab-Toolkit
 ```
 
-## Safety and scope
+## Linux features
 
-- Audit and report actions are read-only. The firewall option requires typing `YES`.
-- Firewall changes can disconnect remote sessions. Confirm remote access rules before proceeding.
-- Use only on systems you own or administer with authorization.
-- Review all commands before executing with elevated privileges.
-- Reports can include usernames and IP addresses; review before sharing.
-- No score manipulation, automatic forensic answers, credential extraction, or destructive user removal.
-- **Not affiliated with or endorsed by CyberPatriot, AFA, Microsoft, or Linux distributors.** Competition participants must independently verify current event rules before using any tooling.
-- Linux syntax was checked; full runtime testing on each supported operating system and Windows remains pending.
+- OS and account inventory
+- Privileged-group inspection
+- Firewall status
+- Listening ports
+- Failed services and available updates
+- Local timestamped audit reports
+- General Linux script: SSH configuration inspection and optional UFW enablement with explicit confirmation
 
-## Files
+Linux Mint 21 and Linux Server scripts are currently **read-only**. They do not automatically fix security findings. The general Linux script has a separately confirmed UFW enablement action.
 
-- `scripts/SecurityLab-Windows.ps1` — Windows 11 and compatible Windows Server auditing
-- `scripts/securitylab-linux.sh` — Debian/Ubuntu/Mint and selected other Linux distributions
+## Windows features
 
-## Roadmap
+The Windows scripts are separate variants. Review each script before running it; features may differ by variant.
 
-- Structured JSON report output
-- Configuration profiles for different OS editions
-- Automated CI linting and platform test matrices
-- Granular remediation previews and rollback documentation
+## Safety
+
+- Read the image instructions and preserve required users, services and access.
+- Firewall changes may disconnect remote access. Review allowed ports first.
+- Reports can contain usernames, IP addresses and system configuration details. Do not publish reports without reviewing them.
+- Use only on systems you own or are authorized to administer.
+- No automatic forensic answers or competition score guarantees.
+- Full runtime validation on each operating system has **not** been completed.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE).
