@@ -1,0 +1,9 @@
+{
+  "authorized_admins": [],
+  "authorized_users": [],
+  "required_groups": {"queensguard": ["bselmy"]},
+  "critical_services": ["ssh"],
+  "expected_os": "12",
+  "password_changes": [],
+  "manage_ufw": true
+}
